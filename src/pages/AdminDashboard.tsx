@@ -302,15 +302,15 @@ export default function AdminDashboard() {
         if (field === 'logo_url') {
           maxWidth = 150;
           maxHeight = 150;
-          quality = 0.7;
+          quality = 0.5;
         } else if (field === 'qr_image_url' || field === 'bitcoin_qr_image_url') {
-          maxWidth = 300;
-          maxHeight = 300;
-          quality = 0.6;
+          maxWidth = 200;
+          maxHeight = 200;
+          quality = 0.4;
         } else {
-          maxWidth = 800;
-          maxHeight = 800;
-          quality = 0.4; // Aggressive compression for backgrounds
+          maxWidth = 600;
+          maxHeight = 600;
+          quality = 0.3; // Very aggressive compression for backgrounds
         }
 
         const compressedBase64 = await compressImage(file, maxWidth, maxHeight, quality);
@@ -634,38 +634,9 @@ export default function AdminDashboard() {
                       type="text" 
                       value={settings.bitcoin_id || ''}
                       onChange={e => setSettings({...settings, bitcoin_id: e.target.value})}
-                      placeholder="e.g., 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+                      placeholder="network error"
                       className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black outline-none transition-all"
                     />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Bitcoin QR Code Image</label>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-4">
-                        <input 
-                          type="file" 
-                          accept="image/*"
-                          onChange={(e) => handleFileUpload(e, 'bitcoin_qr_image_url')}
-                          className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition-colors"
-                        />
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <span className="text-sm text-gray-500">OR enter URL:</span>
-                        <input 
-                          type="text" 
-                          value={settings.bitcoin_qr_image_url || ''}
-                          onChange={e => setSettings({...settings, bitcoin_qr_image_url: e.target.value})}
-                          placeholder="URL to your Bitcoin QR code"
-                          className="flex-1 px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black outline-none transition-all"
-                        />
-                      </div>
-                      {settings.bitcoin_qr_image_url && (
-                        <div className="mt-4 p-4 border border-gray-100 rounded-xl bg-gray-50 inline-block">
-                          <p className="text-xs text-gray-500 mb-2 font-medium uppercase tracking-wider">Bitcoin QR Preview</p>
-                          <img src={settings.bitcoin_qr_image_url} alt="Bitcoin QR Preview" className="w-32 h-32 rounded-lg object-cover border border-gray-200 shadow-sm" referrerPolicy="no-referrer" />
-                        </div>
-                      )}
-                    </div>
                   </div>
                 </div>
               </div>

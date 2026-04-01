@@ -466,16 +466,12 @@ export default function Shop() {
                     ) : (
                       <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 flex flex-col items-center">
                         <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Scan QR to pay via Bitcoin</p>
-                        {settings.bitcoin_qr_image_url ? (
-                          <img src={settings.bitcoin_qr_image_url} alt="Bitcoin QR Code" className="w-48 h-48 rounded-2xl border-2 theme-border-light shadow-sm bg-white p-2 object-contain" referrerPolicy="no-referrer" />
-                        ) : (
-                          <div className="w-48 h-48 bg-gray-200 dark:bg-gray-700 rounded-2xl flex items-center justify-center text-gray-400">No QR</div>
-                        )}
-                        {settings.bitcoin_id && (
-                          <div className="mt-4 bg-orange-50 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 px-4 py-2 rounded-xl border border-orange-100 dark:border-orange-800 font-mono text-xs font-medium break-all">
-                            {settings.bitcoin_id}
-                          </div>
-                        )}
+                        <div className="w-48 h-48 bg-gray-100 dark:bg-gray-700 rounded-2xl flex items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-600">
+                          <span className="text-red-500 font-bold text-lg">Network Error</span>
+                        </div>
+                        <div className="mt-4 bg-red-50 dark:bg-red-900/30 text-red-800 dark:text-red-300 px-4 py-2 rounded-xl border border-red-100 dark:border-red-800 font-mono text-sm font-medium break-all text-center">
+                          Network Error
+                        </div>
                       </div>
                     )}
                   </div>
